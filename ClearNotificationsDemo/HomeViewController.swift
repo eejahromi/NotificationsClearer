@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.tabBarItem.badgeValue = String(1)
+        self.navigationController?.tabBarItem.badgeValue = String(1)
     }
 
 

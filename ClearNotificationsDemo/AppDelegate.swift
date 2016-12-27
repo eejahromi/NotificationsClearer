@@ -27,8 +27,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillResignActive(_ application: UIApplication) {
         
-        
-        
+        let tabbarController = self.window?.rootViewController as? UITabBarController
+        let viewControllers: [UIViewController] = (tabbarController?.viewControllers)!
+        var badgeCount: Int = 0
+        for viewController in viewControllers {
+            if viewController.tabBarItem.badgeValue == nil {
+                continue
+            }
+            badgeCount += Int(viewController.tabBarItem.badgeValue!)!
+        }
+        UIApplication.shared.applicationIconBadgeNumber = badgeCount
     }
 
 
