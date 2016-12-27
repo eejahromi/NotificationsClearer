@@ -16,11 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        let shortcutItem = UIApplicationShortcutItem(type: "com.ehsanjahromi.clear",
+                                                     localizedTitle: "Clear Notifications",
+                                                     localizedSubtitle: nil,
+                                                     icon: UIApplicationShortcutIcon(templateImageName: "x_clear"),
+                                                     userInfo: nil)
+        UIApplication.shared.shortcutItems = [shortcutItem]
+        
         return true
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
-        
         
         
     }
