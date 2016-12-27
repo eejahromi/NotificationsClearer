@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
+        setupUserNotifications()
         let shortcutItem = UIApplicationShortcutItem(type: "com.ehsanjahromi.clear",
                                                      localizedTitle: "Clear Notifications",
                                                      localizedSubtitle: nil,
@@ -26,8 +28,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    private func setupUserNotifications() {
+        let notification = UNUserNotificationCenter.current()
+        let options = UNAuthorizationOptions.badge
+        notification.requestAuthorization(options: options, completionHandler: { (bool,error) in
+            if bool == false {
+                print("User permissions not granted.")
+            }
+        })
+    }
+    
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         
+        if shortcutItem.type == "com.ehsanjahromi.clear" {
+            
+        }
         
     }
 

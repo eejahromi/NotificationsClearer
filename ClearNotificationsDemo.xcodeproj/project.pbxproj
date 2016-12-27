@@ -269,6 +269,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = R89DM7YL8Q;
 				INFOPLIST_FILE = ClearNotificationsDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ehsanjahromi.ClearNotificationsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -282,6 +283,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = R89DM7YL8Q;
 				INFOPLIST_FILE = ClearNotificationsDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ehsanjahromi.ClearNotificationsDemo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -308,6 +310,7 @@
 				B20F5C1B1E11CA5000E1B838 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
