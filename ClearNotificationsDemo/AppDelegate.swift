@@ -52,19 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                      icon: UIApplicationShortcutIcon(templateImageName: "x_clear"),
                                                      userInfo: nil)
         
-        let messagesShortcutItem = UIApplicationShortcutItem(type: ShortcutItemTypes.messages.rawValue,
-                                                     localizedTitle: "Messages",
-                                                     localizedSubtitle: nil,
-                                                     icon: UIApplicationShortcutIcon(templateImageName: "x_comment"),
-                                                     userInfo: nil)
-        
-        let notificationsShortcutItem = UIApplicationShortcutItem(type: ShortcutItemTypes.notifications.rawValue,
-                                                             localizedTitle: "Notifications",
-                                                             localizedSubtitle: nil,
-                                                             icon: UIApplicationShortcutIcon(templateImageName: "x_wave"),
-                                                             userInfo: nil)
-        
-        UIApplication.shared.shortcutItems = [clearShortcutItem,messagesShortcutItem,notificationsShortcutItem]
+        UIApplication.shared.shortcutItems = [clearShortcutItem]
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
