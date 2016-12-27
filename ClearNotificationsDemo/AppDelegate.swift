@@ -72,7 +72,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let tabbarController = self.window?.rootViewController as? UITabBarController
         
         if shortcutItem.type == ShortcutItemTypes.clear.rawValue {
+            UIApplication.shared.applicationIconBadgeNumber = 0
             
+            let viewControllers: [UIViewController] = (tabbarController?.viewControllers)!
+            for viewController in viewControllers {
+                if viewController.tabBarItem.badgeValue != nil {
+                    viewController.tabBarItem.badgeValue = nil
+                }
+                
+            }
         } else if shortcutItem.type == ShortcutItemTypes.messages.rawValue {
             tabbarController?.selectedIndex = Tabs.messages.rawValue
         } else if shortcutItem.type == ShortcutItemTypes.notifications.rawValue {
