@@ -13,6 +13,18 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    enum Tabs: Int {
+        case home = 0
+        case messages = 1
+        case notifications = 2
+    }
+    
+    enum ShortcutItemTypes: String {
+        case clear = "com.ehsanjahromi.clear"
+        case messages = "com.ehsanjahromi.messages"
+        case notifications = "com.ehsanjahromi.notifications"
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
@@ -34,19 +46,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func createShortcutItems() {
-        let clearShortcutItem = UIApplicationShortcutItem(type: "com.ehsanjahromi.clear",
+        let clearShortcutItem = UIApplicationShortcutItem(type: ShortcutItemTypes.clear.rawValue,
                                                      localizedTitle: "Clear Notifications",
                                                      localizedSubtitle: nil,
                                                      icon: UIApplicationShortcutIcon(templateImageName: "x_clear"),
                                                      userInfo: nil)
         
-        let messagesShortcutItem = UIApplicationShortcutItem(type: "com.ehsanjahromi.messages",
+        let messagesShortcutItem = UIApplicationShortcutItem(type: ShortcutItemTypes.messages.rawValue,
                                                      localizedTitle: "Messages",
                                                      localizedSubtitle: nil,
                                                      icon: UIApplicationShortcutIcon(templateImageName: "x_comment"),
                                                      userInfo: nil)
         
-        let notificationsShortcutItem = UIApplicationShortcutItem(type: "com.ehsanjahromi.messages",
+        let notificationsShortcutItem = UIApplicationShortcutItem(type: ShortcutItemTypes.notifications.rawValue,
                                                              localizedTitle: "Notifications",
                                                              localizedSubtitle: nil,
                                                              icon: UIApplicationShortcutIcon(templateImageName: "x_wave"),
@@ -57,8 +69,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
         
-        if shortcutItem.type == "com.ehsanjahromi.clear" {
+        let tabbarController = self.window?.rootViewController as? UITabBarController
+        
+        if shortcutItem.type == ShortcutItemTypes.clear.rawValue {
             
+        } else if shortcutItem.type == ShortcutItemTypes.messages.rawValue {
+            tabbarController?.selectedIndex = Tabs.messages.rawValue
+        } else if shortcutItem.type == ShortcutItemTypes.notifications.rawValue {
+            tabbarController?.selectedIndex = Tabs.notifications.rawValue
         }
         
     }
