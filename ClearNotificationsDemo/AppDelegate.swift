@@ -18,12 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         setupUserNotifications()
-        let shortcutItem = UIApplicationShortcutItem(type: "com.ehsanjahromi.clear",
-                                                     localizedTitle: "Clear Notifications",
-                                                     localizedSubtitle: nil,
-                                                     icon: UIApplicationShortcutIcon(templateImageName: "x_clear"),
-                                                     userInfo: nil)
-        UIApplication.shared.shortcutItems = [shortcutItem]
+        createShortcutItems()
         
         return true
     }
@@ -36,6 +31,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 print("User permissions not granted.")
             }
         })
+    }
+
+    private func createShortcutItems() {
+        let clearShortcutItem = UIApplicationShortcutItem(type: "com.ehsanjahromi.clear",
+                                                     localizedTitle: "Clear Notifications",
+                                                     localizedSubtitle: nil,
+                                                     icon: UIApplicationShortcutIcon(templateImageName: "x_clear"),
+                                                     userInfo: nil)
+        
+        let messagesShortcutItem = UIApplicationShortcutItem(type: "com.ehsanjahromi.messages",
+                                                     localizedTitle: "Messages",
+                                                     localizedSubtitle: nil,
+                                                     icon: UIApplicationShortcutIcon(templateImageName: "x_comment"),
+                                                     userInfo: nil)
+        
+        let notificationsShortcutItem = UIApplicationShortcutItem(type: "com.ehsanjahromi.messages",
+                                                             localizedTitle: "Notifications",
+                                                             localizedSubtitle: nil,
+                                                             icon: UIApplicationShortcutIcon(templateImageName: "x_wave"),
+                                                             userInfo: nil)
+        
+        UIApplication.shared.shortcutItems = [clearShortcutItem,messagesShortcutItem,notificationsShortcutItem]
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
