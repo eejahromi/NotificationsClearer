@@ -13,6 +13,7 @@ class NotificationsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.title = "Notifications"
         self.navigationController?.tabBarItem.badgeValue = String(1)
     }
 

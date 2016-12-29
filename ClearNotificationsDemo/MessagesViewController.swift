@@ -13,6 +13,7 @@ class MessagesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "Messages"
         self.navigationController?.tabBarItem.badgeValue = String(1)
     }
     
