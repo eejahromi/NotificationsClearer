@@ -13,6 +13,7 @@ import UserNotifications
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var launchedShortcutItem: UIApplicationShortcutItem?
     
     enum Tabs: Int {
         case home = 0
@@ -26,13 +27,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case notifications = "com.ehsanjahromi.notifications"
     }
 
+    func handleShortCutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
+        var handled = false
+        
+        guard let shortCutType = shortcutItem.type as String? else { return false }
+        
+        let tabbarController = self.window?.rootViewController as? UITabBarController
+        
+        switch shortCutType {
+            case ShortcutItemTypes.messages.rawValue:
+                tabbarController?.selectedIndex = Tabs.messages.rawValue
+                handled = true
+            case ShortcutItemTypes.notifications.rawValue:
+                tabbarController?.selectedIndex = Tabs.notifications.rawValue
+                handled = true
+            case ShortcutItemTypes.clear.rawValue:
+                UIApplication.shared.applicationIconBadgeNumber = 0
+            
+                let viewControllers: [UIViewController] = (tabbarController?.viewControllers)!
+                for viewController in viewControllers {
+                    if viewController.tabBarItem.badgeValue != nil {
+                        viewController.tabBarItem.badgeValue = nil
+                    }
+                
+                }
+                handled = true
+        default:
+            handled = false
+        }
+        
+        return handled
+    }
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        var shouldPerformAdditionalDelegateHandling = true
+        
+        if let shortcutItem = launchOptions?[UIApplicationLaunchOptionsKey.shortcutItem] as? UIApplicationShortcutItem {
+            launchedShortcutItem = shortcutItem
+            
+            // This will block "performActionForShortcutItem:completionHandler" from being called.
+            shouldPerformAdditionalDelegateHandling = false
+        }
         
         setupUserNotifications()
         createShortcutItems()
         
-        return true
+        return shouldPerformAdditionalDelegateHandling
     }
     
     private func setupUserNotifications() {
