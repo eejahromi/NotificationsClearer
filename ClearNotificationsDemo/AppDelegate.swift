@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         case notifications = "com.ehsanjahromi.notifications"
     }
 
-    func handleShortCutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
+    func handleShortcutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
         var handled = false
         
         guard let shortCutType = shortcutItem.type as String? else { return false }
@@ -38,9 +38,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             case ShortcutItemTypes.messages.rawValue:
                 tabbarController?.selectedIndex = Tabs.messages.rawValue
                 handled = true
+            
             case ShortcutItemTypes.notifications.rawValue:
                 tabbarController?.selectedIndex = Tabs.notifications.rawValue
                 handled = true
+            
             case ShortcutItemTypes.clear.rawValue:
                 UIApplication.shared.applicationIconBadgeNumber = 0
             
@@ -52,8 +54,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 }
                 handled = true
-        default:
-            handled = false
+            
+            default:
+                handled = false
         }
         
         return handled
@@ -79,7 +82,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notification = UNUserNotificationCenter.current()
         let options = UNAuthorizationOptions.badge
         notification.requestAuthorization(options: options, completionHandler: { (bool,error) in
-            if bool == false {
+            if !bool {
                 print("User permissions not granted.")
             }
         })
@@ -91,34 +94,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                      localizedSubtitle: nil,
                                                      icon: UIApplicationShortcutIcon(templateImageName: "x_clear"),
                                                      userInfo: nil)
-        
         UIApplication.shared.shortcutItems = [clearShortcutItem]
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
+        let handledShortcutItem = handleShortcutItem(shortcutItem: shortcutItem)
         
-        let tabbarController = self.window?.rootViewController as? UITabBarController
-        
-        if shortcutItem.type == ShortcutItemTypes.clear.rawValue {
-            UIApplication.shared.applicationIconBadgeNumber = 0
-            
-            let viewControllers: [UIViewController] = (tabbarController?.viewControllers)!
-            for viewController in viewControllers {
-                if viewController.tabBarItem.badgeValue != nil {
-                    viewController.tabBarItem.badgeValue = nil
-                }
-                
-            }
-        } else if shortcutItem.type == ShortcutItemTypes.messages.rawValue {
-            tabbarController?.selectedIndex = Tabs.messages.rawValue
-        } else if shortcutItem.type == ShortcutItemTypes.notifications.rawValue {
-            tabbarController?.selectedIndex = Tabs.notifications.rawValue
-        }
+        completionHandler(handledShortcutItem)
         
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
-        
         let tabbarController = self.window?.rootViewController as? UITabBarController
         let viewControllers: [UIViewController] = (tabbarController?.viewControllers)!
         var badgeCount: Int = 0
@@ -131,18 +117,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UIApplication.shared.applicationIconBadgeNumber = badgeCount
     }
 
-
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
-    }
-
     func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+        guard let shortcut = launchedShortcutItem else { return }
+        
+        let _ = handleShortcutItem(shortcutItem: shortcut)
+        
+        launchedShortcutItem = nil
+        
     }
 
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
+
 
 
 }
