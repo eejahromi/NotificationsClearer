@@ -4,6 +4,8 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>ClearNotifs</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -20,6 +22,25 @@
 	<string>1</string>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>x_comment</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Messages</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.ehsanjahromi.messages</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconFile</key>
+			<string>x_wave</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Notifications</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.ehsanjahromi.notifications</string>
+		</dict>
+	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
