@@ -11,8 +11,6 @@
 		B20F5C101E11CA5000E1B838 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20F5C0E1E11CA5000E1B838 /* Main.storyboard */; };
 		B20F5C121E11CA5000E1B838 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B20F5C111E11CA5000E1B838 /* Assets.xcassets */; };
 		B20F5C151E11CA5000E1B838 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B20F5C131E11CA5000E1B838 /* LaunchScreen.storyboard */; };
-		B20F5C1D1E11D58500E1B838 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20F5C1C1E11D58500E1B838 /* MessagesViewController.swift */; };
-		B20F5C1F1E11D59A00E1B838 /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20F5C1E1E11D59A00E1B838 /* NotificationsViewController.swift */; };
 		B20F5C211E11D80C00E1B838 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B20F5C201E11D80C00E1B838 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -23,8 +21,6 @@
 		B20F5C111E11CA5000E1B838 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B20F5C141E11CA5000E1B838 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B20F5C161E11CA5000E1B838 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B20F5C1C1E11D58500E1B838 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		B20F5C1E1E11D59A00E1B838 /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		B20F5C201E11D80C00E1B838 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,8 +56,6 @@
 			children = (
 				B20F5C0A1E11CA5000E1B838 /* AppDelegate.swift */,
 				B20F5C201E11D80C00E1B838 /* HomeViewController.swift */,
-				B20F5C1C1E11D58500E1B838 /* MessagesViewController.swift */,
-				B20F5C1E1E11D59A00E1B838 /* NotificationsViewController.swift */,
 				B20F5C0E1E11CA5000E1B838 /* Main.storyboard */,
 				B20F5C111E11CA5000E1B838 /* Assets.xcassets */,
 				B20F5C131E11CA5000E1B838 /* LaunchScreen.storyboard */,
@@ -143,9 +137,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B20F5C1D1E11D58500E1B838 /* MessagesViewController.swift in Sources */,
 				B20F5C0B1E11CA5000E1B838 /* AppDelegate.swift in Sources */,
-				B20F5C1F1E11D59A00E1B838 /* NotificationsViewController.swift in Sources */,
 				B20F5C211E11D80C00E1B838 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
