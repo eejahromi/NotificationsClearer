@@ -20,51 +20,39 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Badge Count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sm9-fK-9zh">
+                                <rect key="frame" x="137" y="323" width="100" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="MSX-zo-6hq">
+                                <rect key="frame" x="140" y="363" width="94" height="29"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="94" id="wi2-94-XeL"/>
+                                </constraints>
+                                <connections>
+                                    <action selector="updateBadgeCount:" destination="BYZ-38-t0r" eventType="valueChanged" id="hfw-7v-Ge4"/>
+                                </connections>
+                            </stepper>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="MSX-zo-6hq" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="aEL-v7-4WJ"/>
+                            <constraint firstItem="sm9-fK-9zh" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bwL-MP-LSc"/>
+                            <constraint firstItem="sm9-fK-9zh" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="kiY-vv-TDy"/>
+                            <constraint firstItem="MSX-zo-6hq" firstAttribute="top" secondItem="sm9-fK-9zh" secondAttribute="bottom" constant="19" id="xz4-W4-4ll"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="jHd-EY-ml1"/>
+                    <connections>
+                        <outlet property="stepper" destination="MSX-zo-6hq" id="hxa-LE-ckN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1951" y="-538"/>
-        </scene>
-        <!--Messages View Controller-->
-        <scene sceneID="fNT-2R-LjQ">
-            <objects>
-                <viewController id="dsh-eA-5SJ" customClass="MessagesViewController" customModule="ClearNotificationsDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Osm-OL-pdl"/>
-                        <viewControllerLayoutGuide type="bottom" id="amZ-en-B7a"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="z84-gD-3Da">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="HNU-G6-aY8"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="IUm-mq-bkf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1956" y="115.59220389805098"/>
-        </scene>
-        <!--Notifications View Controller-->
-        <scene sceneID="1QI-qF-BuJ">
-            <objects>
-                <viewController id="qVe-W1-Ys7" customClass="NotificationsViewController" customModule="ClearNotificationsDemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="M9z-Jq-TC5"/>
-                        <viewControllerLayoutGuide type="bottom" id="QiM-AG-mKg"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Ve1-b3-d8J">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <navigationItem key="navigationItem" id="ZWw-eV-JQa"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="GPh-IZ-Txk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1951.2" y="785.75712143928047"/>
+            <point key="canvasLocation" x="1910" y="116"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="PSS-jx-m79">
@@ -117,7 +105,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="dsh-eA-5SJ" kind="relationship" relationship="rootViewController" id="WTg-2S-Cm4"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="9sb-SV-k4o"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="a1u-nm-1Sr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -136,7 +124,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="qVe-W1-Ys7" kind="relationship" relationship="rootViewController" id="lWf-5L-h5a"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="G5Q-36-T9k"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3Fg-7U-Hd3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -149,4 +137,7 @@
         <image name="x_left-align" width="30" height="30"/>
         <image name="x_wave" width="30" height="30"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="9sb-SV-k4o"/>
+    </inferredMetricsTieBreakers>
 </document>
