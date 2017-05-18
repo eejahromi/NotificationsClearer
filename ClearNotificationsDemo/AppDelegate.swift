@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     var launchedShortcutItem: UIApplicationShortcutItem?
+    var badgeCount: Int?
     
     enum Tabs: Int {
         case home = 0
@@ -89,12 +90,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     private func createShortcutItems() {
+        
         let clearShortcutItem = UIApplicationShortcutItem(type: ShortcutItemTypes.clear.rawValue,
                                                      localizedTitle: "Clear Notifications",
                                                      localizedSubtitle: nil,
                                                      icon: UIApplicationShortcutIcon(templateImageName: "x_clear"),
                                                      userInfo: nil)
-        UIApplication.shared.shortcutItems = [clearShortcutItem]
+        if let count = badgeCount, count > 0 {
+            UIApplication.shared.shortcutItems = [clearShortcutItem]
+        } else {
+            UIApplication.shared.shortcutItems = nil
+        }
     }
     
     func application(_ application: UIApplication, performActionFor shortcutItem: UIApplicationShortcutItem, completionHandler: @escaping (Bool) -> Void) {
@@ -107,14 +113,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillResignActive(_ application: UIApplication) {
         let tabbarController = self.window?.rootViewController as? UITabBarController
         let viewControllers: [UIViewController] = (tabbarController?.viewControllers)!
-        var badgeCount: Int = 0
+        var count: Int = 0
         for viewController in viewControllers {
             if viewController.tabBarItem.badgeValue == nil {
                 continue
             }
-            badgeCount += Int(viewController.tabBarItem.badgeValue!)!
+            count += Int(viewController.tabBarItem.badgeValue!)!
         }
-        UIApplication.shared.applicationIconBadgeNumber = badgeCount
+        badgeCount = count
+        UIApplication.shared.applicationIconBadgeNumber = badgeCount!
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
